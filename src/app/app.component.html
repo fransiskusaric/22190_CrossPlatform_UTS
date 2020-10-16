@@ -1,3 +1,38 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu swipeGesture="false" menuId="main-menu" content-id="main">
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item detail="false" routerLink="/home">
+            <ion-icon name="home-outline" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item detail="false" routerLink="/admin">
+            <ion-icon name="accessibility-outline" slot="start"></ion-icon>
+            <ion-label>Admin</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item detail="false" routerLink="/about-app">
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>About App</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-menu-toggle>
+        <ion-item lines="none">
+          <ion-button fill="clear">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Exit</ion-label>
+          </ion-button>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

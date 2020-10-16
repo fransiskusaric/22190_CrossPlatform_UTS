@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Item } from './home.model';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  items: Item[];
 
-  constructor() {}
+  constructor(
+    private homeService: HomeService
+  ) {}
 
+  ionViewWillEnter() {
+    this.items = this.homeService.getAllItem();
+  }
 }
