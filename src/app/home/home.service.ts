@@ -147,7 +147,8 @@ export class HomeService {
     if(itemId.substring(0,1) == 'c') {
       console.log("cpu");
       this.item[id] = {
-        foto: form.value.foto,
+        id: itemId,
+        foto: [form.value.foto],
         merek: form.value.merek,
         model: form.value.model,
         harga: form.value.harga,
@@ -160,7 +161,8 @@ export class HomeService {
     } else if(itemId.substring(0,1) == 'r') {
       console.log("ram");
       this.item[id] = {
-        foto: form.value.foto,
+        id: itemId,
+        foto: [form.value.foto],
         merek: form.value.merek,
         model: form.value.model,
         harga: form.value.harga,
@@ -172,7 +174,8 @@ export class HomeService {
     else if(itemId.substring(0,1) == 'm') {
       console.log("motherboard");
       this.item[id] = {
-        foto: form.value.foto,
+        id: itemId,
+        foto: [form.value.foto],
         merek: form.value.merek,
         model: form.value.model,
         harga: form.value.harga,
@@ -184,7 +187,8 @@ export class HomeService {
     else if(itemId.substring(0,1) == 'g') {
       console.log("gpu");
       this.item[id] = {
-        foto: form.value.foto,
+        id: itemId,
+        foto: [form.value.foto],
         merek: form.value.merek,
         model: form.value.model,
         harga: form.value.harga,
