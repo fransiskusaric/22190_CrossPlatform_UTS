@@ -1,5 +1,5 @@
 export interface Item {
-    id: string;
+    id?: string;
     foto: string[];
     merek: string;
     model: string;

@@ -16,7 +16,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Jenis</ion-label>
-        <ion-select formControlName="jenis" placeholder="Pilih jenis item">
+        <ion-select formControlName="jenis" (ionChange)="onChange($event)" placeholder="Pilih jenis item">
           <ion-select-option value="cpu">CPU</ion-select-option>
           <ion-select-option value="ram">RAM</ion-select-option>
           <ion-select-option value="motherboard">Motherboard</ion-select-option>
@@ -34,27 +34,29 @@
       <ion-item>
         <ion-label position="stacked">Harga</ion-label>
         <ion-note float="left">Rp.</ion-note>
-        <ion-input type="number" min="0" formControlName="harga" clearInput="true" placeholder="Masukkan harga"></ion-input>
+        <ion-input type="number" formControlName="harga" clearInput="true" placeholder="Masukkan harga"></ion-input>
       </ion-item>
       <ion-item style="padding-bottom: 16px;">
         <ion-label position="stacked">Stok</ion-label>
-        <ion-input type="number" min="1" formControlName="stok" clearInput="true" placeholder="Masukkan jumlah barang"></ion-input>
+        <ion-input type="number" formControlName="stok" clearInput="true" placeholder="Masukkan jumlah barang"></ion-input>
       </ion-item>
+
       <ion-label style="padding: 16px 16px 16px 16px">Detail Produk</ion-label>
-      <ng-container>
+      
+      <ng-container *ngIf="type == 'cpu'">
         <ion-grid>
           <ion-row>
             <ion-col>
               <ion-item>
                 <ion-label position="stacked">Base Clock</ion-label>
-                <ion-input type="number" min="0" formControlName="baseClock" clearInput="true" placeholder="0.0"></ion-input>
+                <ion-input type="number" formControlName="baseClock" clearInput="true" placeholder="0.0"></ion-input>
                 <ion-note>GHz</ion-note>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
                 <ion-label position="stacked">Boost Clock</ion-label>
-                <ion-input type="number" min="0" formControlName="boostClock" clearInput="true" placeholder="0.0"></ion-input>
+                <ion-input type="number" formControlName="boostClock" clearInput="true" placeholder="0.0"></ion-input>
                 <ion-note>GHz</ion-note>
               </ion-item>
             </ion-col>
@@ -63,20 +65,53 @@
             <ion-col>
               <ion-item>
                 <ion-label position="stacked">Core Count</ion-label>
-                <ion-input type="number" min="0" formControlName="core" clearInput="true" placeholder="0.0"></ion-input>
+                <ion-input type="number" formControlName="core" clearInput="true" placeholder="0"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
                 <ion-label position="stacked">Thread Count</ion-label>
-                <ion-input type="number" min="0" formControlName="thread" clearInput="true" placeholder="0.0"></ion-input>
+                <ion-input type="number" formControlName="thread" clearInput="true" placeholder="0"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ng-container>
+
+      <ng-container *ngIf="type == 'ram'">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Speed</ion-label>
+                <ion-input type="number" formControlName="speed" clearInput="true" placeholder="0"></ion-input>
+                <ion-note>MHz</ion-note>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Ukuran</ion-label>
+                <ion-input type="number" formControlName="ukuran" clearInput="true" placeholder="0"></ion-input>
+                <ion-note>mm</ion-note>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+
+      <ng-container *ngIf="type == 'motherboard'">
+        <ion-item>
+          <ion-label position="stacked">Chipset</ion-label>
+          <ion-input type="text" formControlName="chipset" clearInput="true" placeholder="Masukkan chipset"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Prosesor</ion-label>
+          <ion-input type="text" formControlName="prosesor" clearInput="true" placeholder="Masukkan merek prosesor"></ion-input>
+        </ion-item>
+      </ng-container>
+
     </ion-list>
-    <ion-button color="warning" (click)="onSubmit(form)" [disabled]="!form.valid">
+    <ion-button (click)="onSubmit()" class="ion-padding-start">
       <ion-label>Tambahkan Produk</ion-label>
     </ion-button>
   </form>

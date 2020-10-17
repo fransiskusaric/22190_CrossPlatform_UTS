@@ -24,3 +24,19 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-toolbar {
+    --ion-background-color: royalblue;
+    color: white;
+}
+
+ion-content {
+    --ion-background-color: paleturquoise;
+    ion-card {
+        --ion-background-color: white;
+    }
+}
+
+ion-footer {
+    --ion-background-color: paleturquoise;
+}

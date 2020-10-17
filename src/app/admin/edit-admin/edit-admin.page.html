@@ -1,9 +1,109 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edit-admin</ion-title>
+    <ion-title>Edit {{ detailItem.merek }} {{detailItem.model }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button text="" icon="close-outline" defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="form">
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom: 0px;">URL Foto</ion-label>
+        <ion-textarea type="url" rows="4" [(ngModel)]="detailItem.foto[0]" formControlName="foto" autoGrow="true" placeholder="Dalam format jpg"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nama</ion-label>
+        <ion-input type="text" [(ngModel)]="detailItem.merek" formControlName="merek" clearInput="true" maxlength="20" placeholder="Masukkan merek"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Model</ion-label>
+        <ion-input type="text" [(ngModel)]="detailItem.model" formControlName="model" clearInput="true" maxlength="30" placeholder="Masukkan seri model"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Harga</ion-label>
+        <ion-note float="left">Rp.</ion-note>
+        <ion-input type="number"  [(ngModel)]="detailItem.harga" formControlName="harga" clearInput="true" placeholder="Masukkan harga"></ion-input>
+      </ion-item>
+      <ion-item style="padding-bottom: 16px;">
+        <ion-label position="stacked">Stok</ion-label>
+        <ion-input type="number"  [(ngModel)]="detailItem.stok"formControlName="stok" clearInput="true" placeholder="Masukkan jumlah barang"></ion-input>
+      </ion-item>
 
+      <ion-label style="padding: 16px 16px 16px 16px">Detail Produk</ion-label>
+      
+      <ng-container *ngIf="jenis == 'c'">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Base Clock</ion-label>
+                <ion-input type="number" [(ngModel)]="detailItem.baseClock" formControlName="baseClock" clearInput="true" placeholder="0.0"></ion-input>
+                <ion-note>GHz</ion-note>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Boost Clock</ion-label>
+                <ion-input type="number" [(ngModel)]="detailItem.boostClock" formControlName="boostClock" clearInput="true" placeholder="0.0"></ion-input>
+                <ion-note>GHz</ion-note>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Core Count</ion-label>
+                <ion-input type="number" [(ngModel)]="detailItem.core" formControlName="core" clearInput="true" placeholder="0"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Thread Count</ion-label>
+                <ion-input type="number" [(ngModel)]="detailItem.thread" formControlName="thread" clearInput="true" placeholder="0"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+
+      <ng-container *ngIf="jenis == 'r'">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Speed</ion-label>
+                <ion-input type="number" [(ngModel)]="detailItem.speed" formControlName="speed" clearInput="true" placeholder="0"></ion-input>
+                <ion-note>MHz</ion-note>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="stacked">Ukuran</ion-label>
+                <ion-input type="number" [(ngModel)]="detailItem.ukuran" formControlName="ukuran" clearInput="true" placeholder="0"></ion-input>
+                <ion-note>mm</ion-note>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+
+      <ng-container *ngIf="jenis == 'm'">
+        <ion-item>
+          <ion-label position="stacked">Chipset</ion-label>
+          <ion-input type="text" [(ngModel)]="detailItem.chipset" formControlName="chipset" clearInput="true" placeholder="Masukkan chipset"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Prosesor</ion-label>
+          <ion-input type="text" [(ngModel)]="detailItem.prosesor" formControlName="prosesor" clearInput="true" placeholder="Masukkan merek prosesor"></ion-input>
+        </ion-item>
+      </ng-container>
+
+    </ion-list>
+    <ion-button (click)="onSubmit()" class="ion-padding-start">
+      <ion-label>Simpan</ion-label>
+    </ion-button>
+  </form>
 </ion-content>

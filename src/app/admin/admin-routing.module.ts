@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./create-admin/create-admin.module').then( m => m.CreateAdminPageModule)
   },
   {
-    path: 'edit-admin',
+    path: ':itemId',
     loadChildren: () => import('./edit-admin/edit-admin.module').then( m => m.EditAdminPageModule)
   }
 ];

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Item } from './home.model';
 
 @Injectable({
@@ -71,8 +72,12 @@ export class HomeService {
       stok: 0
     }
   ];
+  idC = 2; idR = 2; idM = 2; idG = 3;
 
-  constructor() { }
+  constructor(
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController
+  ) { }
 
   getAllItem() {
     return [...this.item];
@@ -84,9 +89,138 @@ export class HomeService {
     })};
   }
 
+  createItem(form) {
+    if(form.value.jenis == "cpu") {
+      this.item.push({
+        id: "c"+this.idC,
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok,
+        baseClock: form.value.baseClock,
+        boostClock: form.value.boostClock,
+        core: form.value.core,
+        thread: form.value.thread
+      });
+      this.idC++;
+    } else if(form.value.jenis == "ram") {
+      this.item.push({
+        id: "r"+this.idR,
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok,
+        speed: form.value.speed,
+        ukuran: form.value.ukuran
+      });
+      this.idR++;
+    } else if(form.value.jenis == "motherboard") {
+      this.item.push({
+        id: "m"+this.idM,
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok,
+        chipset: form.value.chipset,
+        prosesor: form.value.prosesor
+      });
+      this.idM++;
+    } else if(form.value.jenis == "gpu") {
+      this.item.push({
+        id: "g"+this.idG,
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok
+      });
+      this.idG++;
+    }
+  }
+
+  updateItem(form, itemId: string) {
+    console.log(form);
+    let id = this.item.findIndex((item => item.id === itemId));
+    if(itemId.substring(0,1) == 'c') {
+      console.log("cpu");
+      this.item[id] = {
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok,
+        baseClock: form.value.baseClock,
+        boostClock: form.value.boostClock,
+        core: form.value.core,
+        thread: form.value.thread
+      }
+    } else if(itemId.substring(0,1) == 'r') {
+      console.log("ram");
+      this.item[id] = {
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok,
+        speed: form.value.speed,
+        ukuran: form.value.ukuran
+      }
+    }
+    else if(itemId.substring(0,1) == 'm') {
+      console.log("motherboard");
+      this.item[id] = {
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok,
+        chipset: form.value.chipset,
+        prosesor: form.value.prosesor
+      }
+    }
+    else if(itemId.substring(0,1) == 'g') {
+      console.log("gpu");
+      this.item[id] = {
+        foto: form.value.foto,
+        merek: form.value.merek,
+        model: form.value.model,
+        harga: form.value.harga,
+        stok: form.value.stok
+      }
+    }
+  }
+
   deleteItem(itemId: string) {
     this.item = this.item.filter(item => {
       return item.id !== itemId;
     });
+    this.presentLoading();
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Menghapus barang...',
+      duration: 1000
+    });
+
+    await loading.present();
+
+    loading.onDidDismiss().then(() => {
+      this.presentToast();
+    });
+  }
+
+  async presentToast() {
+    let toast = await this.toastCtrl.create({
+      message: 'Barang dihapus.',
+      duration: 3000,
+      color: "medium",
+      position: 'bottom'
+    });
+  
+    await toast.present();
   }
 }
