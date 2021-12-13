@@ -1,6 +1,19 @@
 ion-avatar {
-    height: 250px;
-    width: 80%;
+    height: auto;
+    width: 30%;
     margin: auto;
     display: block;
+}
+
+#first-section {
+    --ion-background-color: paleturqoise;
+    background-color: paleturquoise;
+}
+
+ion-card {
+    button: true; 
+}
+
+.clickable:focus {
+    --ion-background-color: darkgrey;
 }

@@ -8,38 +8,61 @@
 </ion-header>
 
 <ion-content>
-  <ion-item lines="none">
-    <ion-avatar>
-      <ion-img src="https://media.tenor.com/images/08c38d123e8b39ac12083b417153fa26/tenor.png"></ion-img>
-    </ion-avatar>
-  </ion-item>
-  <ion-grid class="ion-text-center ion-padding-top">
-    <ion-row>
-      <ion-col>
-        <ion-label style="font-size: 24px; font-weight: bold;">Fransiskus Aprilion Aric</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-padding-bottom"><ion-col>
-        <ion-label>00000022190 - BL</ion-label>
-    </ion-col></ion-row>
-    <ion-row style="text-align: justify;" class="ion-padding-bottom">
-      <ion-label>
-        Aplikasi ini dikerjakan oleh identitas yang tertera pada halaman ini
-        (saya sendiri) dengan bantuan konsultasi dari Michael Frans. Sumber yang
-        digunakan untuk membantu dalam pengerjaan aplikasi ini antara lain:
-      </ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label>- https://ionicframework.com/docs</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label>- https://forum.ionicframework.com/</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label>- https://swiperjs.com/api/</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label>- https://stackoverflow.com/</ion-label>
-    </ion-row>
-  </ion-grid>
+    <div id="first-section" style="padding-top: 14px; padding-bottom: 10px;">
+        <ion-item lines="none">
+            <ion-avatar>
+                <ion-img src="assets/images/ShinShimizu.jpg"></ion-img>
+            </ion-avatar>
+        </ion-item>
+        <ion-grid class="ion-text-center">
+            <ion-row>
+                <ion-col>
+                    <ion-label style="font-size: 15px; font-weight: bold;">Fransiskus Aprilion Aric</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label style="font-size: 12px;">00000022190 - BL</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <ion-grid>
+        <ion-card>
+            <ion-item (click)="isItemA === 1 ? isItemA = 0 : isItemA = 1" class="clikcable">
+                <ion-label>About Me</ion-label>
+                <ion-icon [name]="!isItemA? 'chevron-forward-outline' : 'chevron-down-outline'"></ion-icon>
+            </ion-item>
+            <ion-card-content *ngIf="isItemA" style="text-align: justify;">
+                <ion-label>
+                    Hello! This program is implemented by the name mentioned above on this page
+                    (myself) with the help and consult of my friend Michael Frans.
+                    Sources used as a guidance in creating this app are as below:
+                </ion-label>
+                <ion-row>
+                    <ion-label>- https://ionicframework.com/docs</ion-label>
+                </ion-row>
+                <ion-row>
+                    <ion-label>- https://forum.ionicframework.com/</ion-label>
+                </ion-row>
+                <ion-row>
+                    <ion-label>- https://swiperjs.com/api/</ion-label>
+                </ion-row>
+                <ion-row>
+                    <ion-label>- https://stackoverflow.com/</ion-label>
+                </ion-row>
+            </ion-card-content>
+            <ion-item (click)="isItemB === 1 ? isItemB = 0 : isItemB = 1" class="clikcable">
+                <ion-label>About This App</ion-label>
+                <ion-icon [name]="!isItemB? 'chevron-forward-outline' : 'chevron-down-outline'"></ion-icon>
+            </ion-item>
+            <ion-card-content *ngIf="isItemB" style="text-align: justify;">
+                <ion-label>
+                    This app provides simple informations about cpu.
+                </ion-label>
+                
+            </ion-card-content>
+        </ion-card>
+    </ion-grid>
 </ion-content>
