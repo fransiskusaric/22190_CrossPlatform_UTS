@@ -89,11 +89,14 @@ export class HomeService {
     })};
   }
 
-  createItem(form) {
+    createItem(form) {
+        if (form.value.foto == "") {
+            form.value.foto = "assets/images/NoImage.png"
+        }
     if(form.value.jenis == "cpu") {
       this.item.push({
         id: "c"+this.idC,
-        foto: form.value.foto,
+        foto: [form.value.foto],
         merek: form.value.merek,
         model: form.value.model,
         harga: form.value.harga,

@@ -30,7 +30,7 @@
 
     <ion-grid>
         <ion-card>
-            <ion-item (click)="isItemA === 1 ? isItemA = 0 : isItemA = 1" class="clikcable">
+            <ion-item (click)="isItemA === 1 ? isItemA = 0 : isItemA = 1" class="clikcable" [lines]="!isItemA? 'full' : 'none'">
                 <ion-label>About Me</ion-label>
                 <ion-icon [name]="!isItemA? 'chevron-forward-outline' : 'chevron-down-outline'"></ion-icon>
             </ion-item>
@@ -53,15 +53,17 @@
                     <ion-label>- https://stackoverflow.com/</ion-label>
                 </ion-row>
             </ion-card-content>
-            <ion-item (click)="isItemB === 1 ? isItemB = 0 : isItemB = 1" class="clikcable">
+            <hr *ngIf="isItemA" class="solid" />
+            <ion-item (click)="isItemB === 1 ? isItemB = 0 : isItemB = 1" class="clikcable" lines="none">
                 <ion-label>About This App</ion-label>
                 <ion-icon [name]="!isItemB? 'chevron-forward-outline' : 'chevron-down-outline'"></ion-icon>
             </ion-item>
             <ion-card-content *ngIf="isItemB" style="text-align: justify;">
                 <ion-label>
-                    This app provides simple informations about cpu.
+                    This app provides simple informations about CPU, Motherboard, RAM, and GPU.
+                    It acts as an online store (but you can't actually order to buy,
+                    just windowshopping :D) and the price listed in Indonesian Rupiah.
                 </ion-label>
-                
             </ion-card-content>
         </ion-card>
     </ion-grid>

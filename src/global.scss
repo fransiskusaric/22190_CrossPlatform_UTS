@@ -25,6 +25,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import "~swiper/swiper-bundle";
+
 ion-toolbar {
     --ion-background-color: royalblue;
     color: white;
@@ -39,4 +41,8 @@ ion-content {
 
 ion-footer {
     --ion-background-color: paleturquoise;
+}
+
+hr.solid {
+    border-top: 2px solid #eee;
 }

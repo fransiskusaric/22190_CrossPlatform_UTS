@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Item } from '../home.model';
@@ -8,8 +8,9 @@ import { HomeService } from '../home.service';
   selector: 'app-home-detail',
   templateUrl: './home-detail.page.html',
   styleUrls: ['./home-detail.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class HomeDetailPage implements OnInit {
+export class HomeDetailPage implements OnInit, AfterContentChecked {
   detailItem: Item;
   @ViewChild('slides', { static: true }) slides: IonSlides;
   slider: any;
@@ -109,6 +110,10 @@ export class HomeDetailPage implements OnInit {
     private homeService: HomeService
   ) { }
 
+    ngAfterContentChecked() {
+
+    }
+    
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if(!paramMap.has('itemId')) {

@@ -14,9 +14,8 @@
   <ion-grid *ngIf="!isGrid">
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2">
-        <ion-list>
-          <ion-card *ngFor="let item of items">
-            <ion-item *ngIf="item.stok > 0" [routerLink]="['./', item.id]">
+        <ion-list *ngFor="let item of items" lines="none">
+            <ion-item *ngIf="item.stok > 0" (click)="navigation(item.id)" lines="none">
               <ion-avatar slot="start">
                 <ion-img [src]="item.foto[0]"></ion-img>
               </ion-avatar>
@@ -26,7 +25,7 @@
                 <ion-label>Tersedia: {{ item.stok }}</ion-label>
               </ion-label>
             </ion-item>
-          </ion-card>
+            <hr class="solid" *ngIf="item.stok > 0"/>
         </ion-list>
       </ion-col>
     </ion-row>
@@ -34,46 +33,20 @@
   <ion-grid *ngIf="isGrid" class="grid">
     <ion-row>
       <ng-container *ngFor="let item of items">
-        <ion-col size="6" size-sm="4" offset-sm="1" *ngIf="item.length % 2 != 0">
+        <ion-col size="6" size-sm="4" offset-sm="1" *ngIf="item.stok > 0">
           <ion-list>
-            <ion-card *ngIf="item.stok > 0">
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <ion-item [routerLink]="['./', item.id]" lines="none">
-                      <ion-img [src]="item.foto[0]"></ion-img>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label style="font-weight: bold;">{{ item.merek }} {{ item.model }}</ion-label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>Rp. {{ item.harga | number: '1.2-2' }}</ion-label>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-label>Tersedia: {{ item.stok }}</ion-label>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-list>
-        </ion-col>
-        <ion-col size="6" size-sm="4" offset-sm="1" *ngIf="item.length % 2 == 0">
-          <ion-list>
-            <ion-card *ngIf="item.stok > 0">
-              <ion-item [routerLink]="['./', item.id]">
+            <ion-item [routerLink]="['./', item.id]" lines="none">
                 <ion-img [src]="item.foto[0]"></ion-img>
-              </ion-item>
-              <ion-label style="font-weight: bold;">{{ item.merek }} {{ item.model }}</ion-label>
-              <ion-label>Rp. {{ item.harga | number: '1.2-2' }}</ion-label>
-              <ion-label>Tersedia: {{ item.stok }}</ion-label>
-            </ion-card>
+            </ion-item>
+            <ion-row>
+                <ion-label style="font-weight: bold;">{{ item.merek }} {{ item.model }}</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-label>Rp. {{ item.harga | number: '1.2-2' }}</ion-label>
+            </ion-row>
+            <ion-row>
+                <ion-label>Tersedia: {{ item.stok }}</ion-label>
+            </ion-row>
           </ion-list>
         </ion-col>
       </ng-container>

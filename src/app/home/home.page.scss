@@ -7,8 +7,13 @@ ion-avatar {
     height: 100px;
     width: 100px;
   }
+}
 
-  ion-card {
-    height: max-content;
-  }
+ion-content {
+    --ion-background-color: white;
+}
+
+ion-list {
+    margin: 0 !important;
+    padding: 0 !important;
 }

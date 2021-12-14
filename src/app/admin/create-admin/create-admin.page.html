@@ -40,42 +40,41 @@
         <ion-label position="stacked">Stok</ion-label>
         <ion-input type="number" formControlName="stok" clearInput="true" placeholder="Masukkan jumlah barang"></ion-input>
       </ion-item>
-
-      <ion-label style="padding: 16px 16px 16px 16px">Detail Produk</ion-label>
       
       <ng-container *ngIf="type == 'cpu'">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label position="stacked">Base Clock</ion-label>
-                <ion-input type="number" formControlName="baseClock" clearInput="true" placeholder="0.0"></ion-input>
-                <ion-note>GHz</ion-note>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label position="stacked">Boost Clock</ion-label>
-                <ion-input type="number" formControlName="boostClock" clearInput="true" placeholder="0.0"></ion-input>
-                <ion-note>GHz</ion-note>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label position="stacked">Core Count</ion-label>
-                <ion-input type="number" formControlName="core" clearInput="true" placeholder="0"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label position="stacked">Thread Count</ion-label>
-                <ion-input type="number" formControlName="thread" clearInput="true" placeholder="0"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+          <ion-label style="padding: 16px 16px 16px 16px">Details Product</ion-label>
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <ion-item>
+                          <ion-label position="stacked">Base Clock</ion-label>
+                          <ion-input type="number" formControlName="baseClock" clearInput="true" placeholder="0.0"></ion-input>
+                          <ion-note>GHz</ion-note>
+                      </ion-item>
+                  </ion-col>
+                  <ion-col>
+                      <ion-item>
+                          <ion-label position="stacked">Boost Clock</ion-label>
+                          <ion-input type="number" formControlName="boostClock" clearInput="true" placeholder="0.0"></ion-input>
+                          <ion-note>GHz</ion-note>
+                      </ion-item>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-item>
+                          <ion-label position="stacked">Core Count</ion-label>
+                          <ion-input type="number" formControlName="core" clearInput="true" placeholder="0"></ion-input>
+                      </ion-item>
+                  </ion-col>
+                  <ion-col>
+                      <ion-item>
+                          <ion-label position="stacked">Thread Count</ion-label>
+                          <ion-input type="number" formControlName="thread" clearInput="true" placeholder="0"></ion-input>
+                      </ion-item>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
       </ng-container>
 
       <ng-container *ngIf="type == 'ram'">
